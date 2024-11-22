@@ -35,7 +35,8 @@ def send_data_to_server(sensor, data):
     header = {
         "Accept": "application/json",
         "X-M2M-RI": "12345",
-        "X-M2M-Origin": "SOrigin"
+        "X-M2M-Origin": "SOrigin",
+        'Content-Type': 'application/vnd.onem2m-res+json; ty=4'
     }
     payload = {
         "m2m:cin": {
