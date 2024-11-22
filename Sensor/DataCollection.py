@@ -50,7 +50,7 @@ def send_data_to_server(sensor, data):
 
     try:
         response = requests.post(url, json=payload, headers=header)
-        if response.status_code == 200:
+        if response.status_code == 201:
             print("데이터 전송 성공")
         else:
             print("데이터 전송 실패:", response)
