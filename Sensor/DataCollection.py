@@ -31,7 +31,7 @@ def get_dht22_data():
 
 def send_data_to_server(sensor, data):
     timestamp = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-    url = "http://203.253.128.177:7579/Mobius/Environment_Data_Collection/Sensor" + sensor
+    url = "http://203.253.128.177:7579/Mobius/ISO-Environment-Control/Sensor" + sensor
     header = {
         "Accept": "application/json",
         "X-M2M-RI": "12345",
