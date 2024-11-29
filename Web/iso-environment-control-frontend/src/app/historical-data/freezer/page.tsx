@@ -87,25 +87,17 @@ export default function Home() {
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Dashboard</BreadcrumbPage>
+                <BreadcrumbPage>History</BreadcrumbPage>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Freezer</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-            <DataCard title="Refrigerator" description="Temperature" value={sensor1 ? sensor1['temperature'] + "°C" : "No data°C"} />
-            <DataCard title="Freezer" description="Temperature" value={sensor2 ? sensor2['temperature'] + "°C" : "No data°C"} />
-            <DataCard title="Labotary" description="Temperature" value={sensor3 ? sensor3['temperature'] + "°C" : "No data°C"} />
-            <DataCard title="Storage" description="Temperature" value={sensor4 ? sensor4['temperature'] + "°C" : "No data°C"} />
-          </div>
-          <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-            <DataCard title="Refrigerator" description="Humidity" value={sensor1 ? sensor1['humidity'] + "%" : "No data%"} />
-            <DataCard title="Freezer" description="Humidity" value={sensor2 ? sensor2['humidity'] + "%" : "No data%"} />
-            <DataCard title="Labotary" description="Humidity" value={sensor3 ? sensor3['humidity'] + "%" : "No data%"} />
-            <DataCard title="Storage" description="Humidity" value={sensor4 ? sensor4['humidity'] + "%" : "No data%"} />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+          In development
         </div>
       </SidebarInset>
     </SidebarProvider>
