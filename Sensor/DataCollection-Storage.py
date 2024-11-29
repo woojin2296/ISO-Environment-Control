@@ -5,9 +5,7 @@ import board
 import adafruit_dht
 
 # DHT22 센서를 사용할 GPIO 핀을 지정
-sensor1 = adafruit_dht.DHT22(board.D22)
-sensor2 = adafruit_dht.DHT22(board.D27)
-sensor3 = adafruit_dht.DHT22(board.D17)
+sensor4 = adafruit_dht.DHT22(board.D4)
 
 LH_THRESHOLD = 30
 INTERVAL_SEC = 3
@@ -18,16 +16,10 @@ class SensorData:
         self.humid = humid
 
 def get_dht22_data():
-    sensor1_temperature = sensor1.temperature
-    sensor1_humidity = sensor1.humidity
+    sensor4_temperature = sensor4.temperature
+    sensor4_humidity = sensor4.humidity
 
-    sensor2_temperature = sensor2.temperature
-    sensor2_humidity = sensor2.humidity
-
-    sensor3_temperature = sensor3.temperature
-    sensor3_humidity = sensor3.humidity
-
-    return SensorData(sensor1_temperature, sensor1_humidity), SensorData(sensor2_temperature, sensor2_humidity), SensorData(sensor3_temperature, sensor3_humidity)
+    return SensorData(sensor4_temperature, sensor4_humidity)
 
 def send_data_to_server(sensor, data):
     timestamp = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
@@ -64,16 +56,12 @@ def main():
         start_time = time.time()
 
         try:
-            sensor1_data, sensor2_data, sensor3_data = get_dht22_data()
+            sensor4_data = get_dht22_data()
 
-            print(sensor1_data.temp, sensor1_data.humid)
-            print(sensor2_data.temp, sensor2_data.humid)
-            print(sensor3_data.temp, sensor3_data.humid)
+            print(sensor4_data.temp, sensor4_data.humid)
 
 
-            send_data_to_server("1", sensor1_data)
-            send_data_to_server("2", sensor2_data)
-            send_data_to_server("3", sensor3_data)
+            send_data_to_server("4", sensor4_data)
 
         except Exception as e:
             print("메인 루프 오류:", e)
