@@ -21,7 +21,7 @@ import React from "react"
 export default function Home() {
   const interval = 3
 
-  const [currentTime, setCurrentTime] = React.useState(new Date())
+  // const [currentTime, setCurrentTime] = React.useState(new Date())
 
   const [sensor1, setSensor1] = React.useState()
   const [sensor2, setSensor2] = React.useState()
@@ -37,7 +37,7 @@ export default function Home() {
   }, [])
 
   const getData = () => {
-    setCurrentTime(new Date())
+    // setCurrentTime(new Date())
 
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
