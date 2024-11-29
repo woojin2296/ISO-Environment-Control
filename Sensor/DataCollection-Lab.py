@@ -10,7 +10,7 @@ sensor2 = adafruit_dht.DHT22(board.D27)
 sensor3 = adafruit_dht.DHT22(board.D17)
 
 LH_THRESHOLD = 30
-INTERVAL_SEC = 3
+INTERVAL_SEC = 600
 
 class SensorData:
     def __init__(self, temp=0, humid=0):
