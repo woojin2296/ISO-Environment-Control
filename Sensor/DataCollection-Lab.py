@@ -7,7 +7,7 @@ import adafruit_dht
 # DHT22 센서를 사용할 GPIO 핀을 지정
 sensor1 = adafruit_dht.DHT22(board.D22)
 sensor2 = adafruit_dht.DHT22(board.D27)
-sensor3 = adafruit_dht.DHT11(board.D17)
+sensor3 = adafruit_dht.DHT22(board.D17)
 
 LH_THRESHOLD = 30
 INTERVAL_SEC = 3
