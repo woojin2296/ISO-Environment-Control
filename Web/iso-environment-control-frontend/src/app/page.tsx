@@ -19,7 +19,7 @@ import {
 import React from "react"
 
 export default function Home() {
-  const interval = 3
+  const interval = 60
 
   // const [currentTime, setCurrentTime] = React.useState(new Date())
 
