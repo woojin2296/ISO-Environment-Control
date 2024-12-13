@@ -21,8 +21,6 @@ import React from "react"
 export default function Home() {
   const interval = 60
 
-  // const [currentTime, setCurrentTime] = React.useState(new Date())
-
   const [sensor1, setSensor1] = React.useState()
   const [sensor2, setSensor2] = React.useState()
   const [sensor3, setSensor3] = React.useState()
@@ -37,8 +35,6 @@ export default function Home() {
   }, [])
 
   const getData = () => {
-    // setCurrentTime(new Date())
-
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("X-M2M-RI", "12345");
@@ -94,16 +90,16 @@ export default function Home() {
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-            <DataCard title="Refrigerator" description="Temperature" value={sensor1 ? sensor1['temperature'] + "°C" : "No data°C"} />
-            <DataCard title="Freezer" description="Temperature" value={sensor2 ? sensor2['temperature'] + "°C" : "No data°C"} />
-            <DataCard title="Labotary" description="Temperature" value={sensor3 ? sensor3['temperature'] + "°C" : "No data°C"} />
-            <DataCard title="Storage" description="Temperature" value={sensor4 ? sensor4['temperature'] + "°C" : "No data°C"} />
+            <DataCard title="Refrigerator" description="Temperature" timestamp={sensor1 ? sensor1['timestamp'] : "No data"} value={sensor1 ? sensor1['temperature'] + "°C" : "No data°C"} />
+            <DataCard title="Freezer" description="Temperature" timestamp={sensor2 ? sensor2['timestamp'] : "No data"} value={sensor2 ? sensor2['temperature'] + "°C" : "No data°C"} />
+            <DataCard title="Labotary" description="Temperature" timestamp={sensor3 ? sensor3['timestamp'] : "No data"} value={sensor3 ? sensor3['temperature'] + "°C" : "No data°C"} />
+            <DataCard title="Storage" description="Temperature" timestamp={sensor4 ? sensor4['timestamp'] : "No data"} value={sensor4 ? sensor4['temperature'] + "°C" : "No data°C"} />
           </div>
           <div className="grid auto-rows-min gap-4 md:grid-cols-4">
-            <DataCard title="Refrigerator" description="Humidity" value={sensor1 ? sensor1['humidity'] + "%" : "No data%"} />
-            <DataCard title="Freezer" description="Humidity" value={sensor2 ? sensor2['humidity'] + "%" : "No data%"} />
-            <DataCard title="Labotary" description="Humidity" value={sensor3 ? sensor3['humidity'] + "%" : "No data%"} />
-            <DataCard title="Storage" description="Humidity" value={sensor4 ? sensor4['humidity'] + "%" : "No data%"} />
+            <DataCard title="Refrigerator" description="Humidity" timestamp={sensor1 ? sensor1['timestamp'] : "No data"} value={sensor1 ? sensor1['humidity'] + "%" : "No data%"} />
+            <DataCard title="Freezer" description="Humidity" timestamp={sensor2 ? sensor2['timestamp'] : "No data"} value={sensor2 ? sensor2['humidity'] + "%" : "No data%"} />
+            <DataCard title="Labotary" description="Humidity" timestamp={sensor3 ? sensor3['timestamp'] : "No data"} value={sensor3 ? sensor3['humidity'] + "%" : "No data%"} />
+            <DataCard title="Storage" description="Humidity" timestamp={sensor4 ? sensor4['timestamp'] : "No data"} value={sensor4 ? sensor4['humidity'] + "%" : "No data%"} />
           </div>
           <div className="min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
         </div>

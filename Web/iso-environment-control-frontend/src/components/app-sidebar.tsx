@@ -76,7 +76,7 @@ const data = {
         },
         {
           title: "Storage",
-          url: "/historical-data/2torage",
+          url: "/historical-data/storage",
           isAvtive: false,
         },
       ],
