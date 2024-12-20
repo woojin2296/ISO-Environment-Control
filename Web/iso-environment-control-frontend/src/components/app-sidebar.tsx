@@ -16,11 +16,9 @@ import {
 } from "@/components/ui/sidebar"
 
 const data = {
-  versions: ["1.0.0"],
   navMain: [
     {
       title: "Home",
-      url: "/",
       items: [
         {
           title: "Dashboard",
@@ -30,34 +28,7 @@ const data = {
       ],
     },
     {
-      title: "Realtime Data",
-      url: "/realtime-data",
-      items: [
-        {
-          title: "Freezer",
-          url: "/realtime-data/freezer",
-          isActive: false,
-        },
-        {
-          title: "Refrigerator",
-          url: "/realtime-data/refrigerator",
-          isActive: false,
-        },
-        {
-          title: "Labotatory",
-          url: "/realtime-data/laboratory",
-          isActive: false,
-        },
-        {
-          title: "Storage",
-          url: "/realtime-data/storage",
-          isActive: false,
-        },
-      ],
-    },
-    {
-      title: "Historical Data",
-      url: "/historical-data",
+      title: "Data History",
       items: [
         {
           title: "Freezer",
@@ -81,6 +52,21 @@ const data = {
         },
       ],
     },
+    {
+      title: "Smart Farm",
+      items: [
+        {
+          title: "Dashboard",
+          url: "/farm/realtimedata",
+          isActive: false,
+        },
+        {
+          title: "Data History",
+          url: "/farm/historicaldata",
+          isActive: false,
+        },
+      ],
+    },
   ],
 }
 
@@ -89,7 +75,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar {...props}>
       <SidebarHeader>
         <VersionSwitcher />
-        <SearchForm />
       </SidebarHeader>
       <SidebarContent>
         {data.navMain.map((item) => (

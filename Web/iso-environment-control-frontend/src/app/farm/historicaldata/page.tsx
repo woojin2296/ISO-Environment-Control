@@ -44,7 +44,7 @@ export default function Home() {
     let offset = 0;
     let hasMore = true;
 
-    const url = `http://203.253.128.177:7579/Mobius/ISO-Environment-Control/Sensor2?ty=4&rcn=4&fu=2&cra=${startDate}&crb=${endDate}&lim=${limit}&ofst=${offset}`;
+    const url = `http://203.253.128.177:7579/Mobius/ISO-Environment-Control/Sensor5?ty=4&rcn=4&fu=2&cra=${startDate}&crb=${endDate}&lim=${limit}&ofst=${offset}`;
     
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
@@ -104,7 +104,7 @@ export default function Home() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 h-4" />
           <Breadcrumb>
@@ -116,11 +116,11 @@ export default function Home() {
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>History</BreadcrumbPage>
+                <BreadcrumbPage>Smart Farm</BreadcrumbPage>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Refrigerator</BreadcrumbPage>
+                <BreadcrumbPage>Data History</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>

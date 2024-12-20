@@ -18,18 +18,24 @@ import {
 } from "@/components/ui/sidebar"
 import React from "react"
 import { SensorData, DateRange } from "@/lib/Type"
+import { DataTable } from "@/components/data-table"
+import { subDays } from "date-fns"
 
 export default function Home() {
 
   const [data, setData] = React.useState<SensorData[]>([]);
   const [dateRange, setDateRange] = React.useState<DateRange>({
-    from: new Date(),
-    to: new Date(),
+    from: subDays(new Date(), 1),
+    to: new Date(), 
   });
-
 
   function getData () {
     const result: SensorData[] = [];
+
+    if (!dateRange || !dateRange.from || !dateRange.to) {
+      setData([]);
+      return;
+    }
 
     const startDate = dateRange.from.toISOString().slice(0, 10).replace(/-/g, "").concat("T000000");
     const endDate = dateRange.to.toISOString().slice(0, 10).replace(/-/g, "").concat("T235959");
@@ -50,45 +56,49 @@ export default function Home() {
       headers: myHeaders,
     };
 
-      fetch(url, requestOptions)
-        .then((res) => res.json())
-        .then((data) => data["m2m:rsp"]["m2m:cin"] || [])
-        .then((data) => data.map((item: any) => item.con))
-        .then((data) => {
-          result.push(...data)
-          
-          console.log(data.length)
-          if (data.length < limit) {
-            hasMore = false;
-            console.log("No more data")
-          }
-          else {
-            offset += limit;
-          }
-        })
-        .catch((error) => console.error(error));
-        
-    // while (hasMore) {
-    //   fetch(url, requestOptions)
-    //     .then((res) => res.json())
-    //     .then((data) => data["m2m:rsp"]["m2m:cin"] || [])
-    //     .then((data) => data.map((item: any) => item.con))
-    //     .then((data) => {
-    //       result.push(...data)
-          
-    //       if (data.length < limit) {
-    //         console.log("No more data")
-    //       }
-    //       else {
-    //         offset += limit;
-    //       }
-    //       console.log(result)
-    //     })
-    //     .catch((error) => console.error(error));
-    // }
+    fetch(url, requestOptions)
+      .then((res) => res.json())
+      .then((data) => data["m2m:rsp"]["m2m:cin"] || [])
+      .then((data) => data.map((item: any) => {
+        const conData = item.con;
+        if (conData.timestamp) {
+          conData.timestamp = convertToKST(conData.timestamp);
+        }
+        return conData;
+      }))
+      .then((data) => {
+        result.push(...data)
+        console.log(result)
+        if (data.length < limit) {
+          hasMore = false;
+        }
+        else {
+          offset += limit;
+        }
+        setData(result);
+      })
+      .catch((error) => console.error(error));
   }
 
-  getData();
+  React.useEffect(() => {
+    getData();
+  }, [dateRange]);
+
+  function convertToKST(utcTimestamp: string): string {
+    const formattedTimestamp = utcTimestamp.replace(/\//g, "-").replace(" ", "T") + "Z";
+    const date = new Date(formattedTimestamp);
+    const options: Intl.DateTimeFormatOptions = {
+      timeZone: "Asia/Seoul",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    };
+    const formattedDate = new Intl.DateTimeFormat("ko-KR", options).format(date);
+    return formattedDate.replaceAll(" ", "").replace(".오전", " ").replace(".오후", " ");
+  }
 
   return (
     <SidebarProvider>
@@ -116,7 +126,7 @@ export default function Home() {
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <Button>Search</Button>
+          <DataTable data={data} dateRange={dateRange} setDateRange={setDateRange}/>
         </div>
       </SidebarInset>
     </SidebarProvider>

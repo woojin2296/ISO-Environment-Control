@@ -101,7 +101,6 @@ export default function Home() {
             <DataCard title="Labotary" description="Humidity" timestamp={sensor3 ? sensor3['timestamp'] : "No data"} value={sensor3 ? sensor3['humidity'] + "%" : "No data%"} />
             <DataCard title="Storage" description="Humidity" timestamp={sensor4 ? sensor4['timestamp'] : "No data"} value={sensor4 ? sensor4['humidity'] + "%" : "No data%"} />
           </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
         </div>
       </SidebarInset>
     </SidebarProvider>
