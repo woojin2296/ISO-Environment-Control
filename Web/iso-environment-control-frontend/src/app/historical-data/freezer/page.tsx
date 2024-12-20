@@ -9,7 +9,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
   SidebarInset,
@@ -17,7 +16,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 import React from "react"
-import { SensorData, DateRange } from "@/lib/Type"
+import { SensorData, DateRange, MobiusData } from "@/lib/Type"
 import { DataTable } from "@/components/data-table"
 import { subDays } from "date-fns"
 
@@ -59,7 +58,7 @@ export default function Home() {
     fetch(url, requestOptions)
       .then((res) => res.json())
       .then((data) => data["m2m:rsp"]["m2m:cin"] || [])
-      .then((data) => data.map((item: any) => {
+      .then((data) => data.map((item : MobiusData) => {
         const conData = item.con;
         if (conData.timestamp) {
           conData.timestamp = convertToKST(conData.timestamp);
@@ -68,7 +67,7 @@ export default function Home() {
       }))
       .then((data) => {
         result.push(...data)
-        console.log(result)
+        console.log(hasMore)
         if (data.length < limit) {
           hasMore = false;
         }

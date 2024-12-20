@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -21,12 +21,8 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -37,7 +33,6 @@ import {
 } from "@/components/ui/table";
 import { SensorData } from "@/lib/Type";
 import { DatePickerWithRange } from "./date-picker";
-import { DateRange } from "react-day-picker";
 
 export function DataTable({
   data,
@@ -52,8 +47,7 @@ export function DataTable({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
+  const [columnVisibility, setColumnVisibility] =React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
   const columns: ColumnDef<SensorData>[] = [
     {
