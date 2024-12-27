@@ -1,4 +1,4 @@
-import time, requests, smbus2
+import time, requests
 from datetime import datetime
 
 import board
@@ -6,9 +6,6 @@ import adafruit_dht
 
 # DHT22 센서를 사용할 GPIO 핀을 지정
 sensor5 = adafruit_dht.DHT22(board.D24)
-
-I2C_BUS = 1
-I2C_ADDR = 0x48
 
 LH_THRESHOLD = 30
 INTERVAL_SEC = 600
@@ -23,21 +20,6 @@ def get_dht22_data():
     sensor5_humidity = sensor5.humidity
 
     return SensorData(sensor5_temperature, sensor5_humidity)
-
-def get_i2C_data():
-    bus = smbus2.SMBus(I2C_BUS)
-
-    try:
-        data = bus.read_i2c_block_data(I2C_ADDR, 0, 2)
-        value = (data[0] << 8) + data[1]
-        temperature = value / 256.0
-        humidity = value / 256.0
-    except Exception as e:
-        print("I2C 데이터 읽기 오류:", e)
-        temperature = 0
-        humidity = 0
-
-    return SensorData(temperature, humidity)
 
 def send_data_to_server(sensor, data):
     timestamp = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
