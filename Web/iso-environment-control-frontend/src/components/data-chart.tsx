@@ -27,7 +27,7 @@ const chartConfig = {
 
 export function DataChart({title, description, value}: {title: string, description: string, value: number}) {
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col bg-muted/50">
       <CardHeader className="items-center pb-0">
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>

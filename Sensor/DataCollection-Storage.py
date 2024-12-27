@@ -8,7 +8,7 @@ import adafruit_dht
 sensor4 = adafruit_dht.DHT22(board.D24)
 
 LH_THRESHOLD = 30
-INTERVAL_SEC = 600
+INTERVAL_SEC = 60
 
 class SensorData:
     def __init__(self, temp=0, humid=0):
