@@ -30,7 +30,6 @@ export function DataChart({title, description, value}: {title: string, descripti
     <Card className="flex flex-col bg-muted/50">
       <CardHeader className="items-center pb-0">
         <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-1 items-center pb-0">
         <ChartContainer

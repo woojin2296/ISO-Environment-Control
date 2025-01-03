@@ -24,7 +24,6 @@ export default function Home() {
   const [sensor1, setSensor1] = React.useState()
   const [sensor2, setSensor2] = React.useState()
   const [sensor3, setSensor3] = React.useState()
-  const [sensor4, setSensor4] = React.useState()
 
   React.useEffect(() => {
     getData()
@@ -59,11 +58,6 @@ export default function Home() {
         .then((res) => res.json())
         .then((data) => setSensor3(data["m2m:cin"].con))
         .catch((error) => console.error(error));
-
-    fetch(`http://203.253.128.177:7579/Mobius/ISO-Environment-Control/Sensor4/la`, requestOptions)
-        .then((res) => res.json())
-        .then((data) => setSensor4(data["m2m:cin"].con))
-        .catch((error) => console.error(error));
   }
 
 
@@ -89,18 +83,16 @@ export default function Home() {
           </Breadcrumb>
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-4">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <DataCard title="Refrigerator" description="Temperature" timestamp={sensor1 ? sensor1['timestamp'] : "No data"} value={sensor1 ? sensor1['temperature'] + "°C" : "No data°C"} />
             <DataCard title="Freezer" description="Temperature" timestamp={sensor2 ? sensor2['timestamp'] : "No data"} value={sensor2 ? sensor2['temperature'] + "°C" : "No data°C"} />
             <DataCard title="Labotary" description="Temperature" timestamp={sensor3 ? sensor3['timestamp'] : "No data"} value={sensor3 ? sensor3['temperature'] + "°C" : "No data°C"} />
-            <DataCard title="Storage" description="Temperature" timestamp={sensor4 ? sensor4['timestamp'] : "No data"} value={sensor4 ? sensor4['temperature'] + "°C" : "No data°C"} />
-          </div>
-          <div className="grid auto-rows-min gap-4 md:grid-cols-4">
+            </div>
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <DataCard title="Refrigerator" description="Humidity" timestamp={sensor1 ? sensor1['timestamp'] : "No data"} value={sensor1 ? sensor1['humidity'] + "%" : "No data%"} />
             <DataCard title="Freezer" description="Humidity" timestamp={sensor2 ? sensor2['timestamp'] : "No data"} value={sensor2 ? sensor2['humidity'] + "%" : "No data%"} />
             <DataCard title="Labotary" description="Humidity" timestamp={sensor3 ? sensor3['timestamp'] : "No data"} value={sensor3 ? sensor3['humidity'] + "%" : "No data%"} />
-            <DataCard title="Storage" description="Humidity" timestamp={sensor4 ? sensor4['timestamp'] : "No data"} value={sensor4 ? sensor4['humidity'] + "%" : "No data%"} />
-          </div>
+            </div>
         </div>
       </SidebarInset>
     </SidebarProvider>

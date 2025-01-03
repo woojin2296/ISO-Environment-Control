@@ -44,10 +44,20 @@ const data = {
           url: "/historical-data/laboratory",
           isActive: false,
         },
+      ],
+    },
+    {
+      title: "KBSI",
+      items: [
         {
-          title: "Storage",
-          url: "/historical-data/storage",
-          isAvtive: false,
+          title: "Dashboard",
+          url: "/kbsi/realtimedata",
+          isActive: false,
+        },
+        {
+          title: "Data History",
+          url: "/kbsi/historicaldata",
+          isActive: false,
         },
       ],
     },
