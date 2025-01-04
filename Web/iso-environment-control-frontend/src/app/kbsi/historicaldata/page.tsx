@@ -94,9 +94,10 @@ export default function Home() {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
+      hour12: false,
     };
     const formattedDate = new Intl.DateTimeFormat("ko-KR", options).format(date);
-    return formattedDate.replaceAll(" ", "").replace(".오전", " ").replace(".오후", " ");
+    return formattedDate.replaceAll(" ", "");
   }
 
   return (

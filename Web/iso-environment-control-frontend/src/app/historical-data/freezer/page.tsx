@@ -43,7 +43,7 @@ export default function Home() {
     let offset = 0;
     let hasMore = true;
 
-    const url = `http://203.253.128.177:7579/Mobius/ISO-Environment-Control/Sensor1?ty=4&rcn=4&fu=2&cra=${startDate}&crb=${endDate}&lim=${limit}&ofst=${offset}`;
+    const url = `http://203.253.128.177:7579/Mobius/ISO-Environment-Control/Sensor3?ty=4&rcn=4&fu=2&cra=${startDate}&crb=${endDate}&lim=${limit}&ofst=${offset}`;
     
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
@@ -94,9 +94,10 @@ export default function Home() {
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
+      hour12: false,
     };
     const formattedDate = new Intl.DateTimeFormat("ko-KR", options).format(date);
-    return formattedDate.replaceAll(" ", "").replace(".오전", " ").replace(".오후", " ");
+    return formattedDate.replaceAll(" ", "");
   }
 
   return (
@@ -119,7 +120,7 @@ export default function Home() {
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Freezer</BreadcrumbPage>
+                <BreadcrumbPage>Laboratory</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
