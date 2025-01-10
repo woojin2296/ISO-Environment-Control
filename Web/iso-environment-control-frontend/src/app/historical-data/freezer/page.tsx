@@ -43,7 +43,7 @@ export default function Home() {
     let offset = 0;
     let hasMore = true;
 
-    const url = `http://203.253.128.177:7579/Mobius/ISO-Environment-Control/Sensor1?ty=4&rcn=4&fu=2&cra=${startDate}&crb=${endDate}&lim=${limit}&ofst=${offset}`;
+    const url = `http://203.253.128.177:7579/Mobius/ISO-Environment-Control/Sensor2?ty=4&rcn=4&fu=2&cra=${startDate}&crb=${endDate}&lim=${limit}&ofst=${offset}`;
     
     const myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
